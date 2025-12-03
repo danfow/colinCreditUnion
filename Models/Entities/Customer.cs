@@ -2,7 +2,7 @@
 {
     public class Customer
     {
-        public required string  CustomerID { get; set; }
+        public required string  CustomerId { get; set; }
 
         public List<Account>? Accounts { get; set; }
 

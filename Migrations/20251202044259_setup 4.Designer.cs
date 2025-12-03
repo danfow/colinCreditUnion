@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using colinCreditUnion.Data;
 
@@ -10,9 +11,11 @@ using colinCreditUnion.Data;
 namespace colinCreditUnion.Migrations
 {
     [DbContext(typeof(colinCreditUnionDbContext))]
-    partial class colinCreditUnionDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251202044259_setup 4")]
+    partial class setup4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,8 +35,7 @@ namespace colinCreditUnion.Migrations
                     b.Property<double>("Balance")
                         .HasColumnType("double");
 
-                    b.Property<string>("CustomerId")
-                        .IsRequired()
+                    b.Property<string>("CustomerID")
                         .HasColumnType("varchar(255)");
 
                     b.Property<bool>("IsClosed")
@@ -41,17 +43,17 @@ namespace colinCreditUnion.Migrations
 
                     b.HasKey("AccountId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustomerID");
 
                     b.ToTable("Accounts");
                 });
 
             modelBuilder.Entity("colinCreditUnion.Models.Entities.Customer", b =>
                 {
-                    b.Property<string>("CustomerId")
+                    b.Property<string>("CustomerID")
                         .HasColumnType("varchar(255)");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("CustomerID");
 
                     b.ToTable("Customers");
                 });
@@ -60,9 +62,7 @@ namespace colinCreditUnion.Migrations
                 {
                     b.HasOne("colinCreditUnion.Models.Entities.Customer", null)
                         .WithMany("Accounts")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerID");
                 });
 
             modelBuilder.Entity("colinCreditUnion.Models.Entities.Customer", b =>

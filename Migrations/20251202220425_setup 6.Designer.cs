@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using colinCreditUnion.Data;
 
@@ -10,9 +11,11 @@ using colinCreditUnion.Data;
 namespace colinCreditUnion.Migrations
 {
     [DbContext(typeof(colinCreditUnionDbContext))]
-    partial class colinCreditUnionDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251202220425_setup 6")]
+    partial class setup6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,10 +51,10 @@ namespace colinCreditUnion.Migrations
 
             modelBuilder.Entity("colinCreditUnion.Models.Entities.Customer", b =>
                 {
-                    b.Property<string>("CustomerId")
+                    b.Property<string>("CustomerID")
                         .HasColumnType("varchar(255)");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("CustomerID");
 
                     b.ToTable("Customers");
                 });

@@ -11,8 +11,8 @@ using colinCreditUnion.Data;
 namespace colinCreditUnion.Migrations
 {
     [DbContext(typeof(colinCreditUnionDbContext))]
-    [Migration("20251202021546_setup")]
-    partial class setup
+    [Migration("20251202223929_setup 10")]
+    partial class setup10
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +35,8 @@ namespace colinCreditUnion.Migrations
                     b.Property<double>("Balance")
                         .HasColumnType("double");
 
-                    b.Property<string>("CustomerID")
+                    b.Property<string>("CustomerId")
+                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<bool>("IsClosed")
@@ -43,17 +44,17 @@ namespace colinCreditUnion.Migrations
 
                     b.HasKey("AccountId");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerId");
 
-                    b.ToTable("Account");
+                    b.ToTable("Accounts");
                 });
 
             modelBuilder.Entity("colinCreditUnion.Models.Entities.Customer", b =>
                 {
-                    b.Property<string>("CustomerID")
+                    b.Property<string>("CustomerId")
                         .HasColumnType("varchar(255)");
 
-                    b.HasKey("CustomerID");
+                    b.HasKey("CustomerId");
 
                     b.ToTable("Customers");
                 });
@@ -62,7 +63,9 @@ namespace colinCreditUnion.Migrations
                 {
                     b.HasOne("colinCreditUnion.Models.Entities.Customer", null)
                         .WithMany("Accounts")
-                        .HasForeignKey("CustomerID");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("colinCreditUnion.Models.Entities.Customer", b =>
