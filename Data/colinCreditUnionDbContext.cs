@@ -8,5 +8,6 @@ namespace colinCreditUnion.Data
         public colinCreditUnionDbContext(DbContextOptions<colinCreditUnionDbContext> options) : base(options) { }
 
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Account> Accounts { get; set; }
     }
 }
