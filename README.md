@@ -1,6 +1,6 @@
 CRUD bank app with option to add accounts, delete accounts, and deposit or withdrawl funds. Complete with unit tests, Swagger web UI and setup for creating a database for the program.
 
-Note: You will have to setup your own SQL server to run this program and add an appsettings.json file with this paramater 
+Note: You will have to setup your own mySQL server to run this program and add an appsettings.json file with this paramater 
   "ConnectionStrings": {
     "serverConnection": "server=localhost;user={yourUserGoesHere};password={yourPasswordGoesHere};database={theDatabaseNameThatWillBeGenerated};
   }
