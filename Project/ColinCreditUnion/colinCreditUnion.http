@@ -1,0 +1,6 @@
+@colinCreditUnion_HostAddress = http://localhost:5032
+
+GET {{colinCreditUnion_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
